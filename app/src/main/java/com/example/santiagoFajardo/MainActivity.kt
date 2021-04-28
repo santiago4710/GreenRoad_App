@@ -1,14 +1,12 @@
 package com.example.santiagoFajardo
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_home.RegisterBotton
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.text.toString()
                     ,PasswordeditText.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful){
-                        MostrarHome(it.result?.user?.email ?: "", ProviderType.BASIC)
+                        MostrarHome()
                     }
                     else{
                         mostrarError()
@@ -72,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(emailEditText.text.toString()
                     ,PasswordeditText.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful){
-                        MostrarHome(it.result?.user?.email ?: "", ProviderType.BASIC)
+                        MostrarHome()
                     }
                     else{
                         mostrarError()
@@ -93,10 +91,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Entrar cuando el log in este bien
-    private fun MostrarHome(email: String, provider: ProviderType ){
+    private fun MostrarHome(){
         val homeIntent = Intent(this,HomeActivity::class.java).apply {
-            putExtra("Email", email)
-            putExtra("Provider",provider.name)
         }
         startActivity(homeIntent)
     }
