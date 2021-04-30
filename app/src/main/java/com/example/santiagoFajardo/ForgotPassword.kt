@@ -22,6 +22,7 @@ class ForgotPassword : AppCompatActivity() {
     actionBar.setDisplayHomeAsUpEnabled(true)
     }
 
+
     private fun CuentaOlvidada(){
         buttonConfirm.setOnClickListener {
             val Correo: String = EmailForgot.text.toString().trim { it <= ' '}
