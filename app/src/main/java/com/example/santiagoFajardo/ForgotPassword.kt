@@ -22,7 +22,7 @@ class ForgotPassword : AppCompatActivity() {
     actionBar.setDisplayHomeAsUpEnabled(true)
     }
 
-
+// comprobamos si el correo existe en la base de dato de firebase
     private fun CuentaOlvidada(){
         buttonConfirm.setOnClickListener {
             val Correo: String = EmailForgot.text.toString().trim { it <= ' '}

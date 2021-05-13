@@ -2,14 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.santiagoFajardo">
 
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name='android.permission.WRITE_EXTERNAL_STORAGE'/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/pantalladecarga"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -17,14 +16,36 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
-        <activity android:name=".MapsActivity"></activity>
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".Main_Tips">
+            android:parentActivityName=".FiltroMaps" />
+        </activity>
+        <activity
+            android:name=".MapaVidrios"
+            android:parentActivityName=".FiltroMaps" />
+        <activity
+            android:name=".MapaPlastico"
+            android:parentActivityName=".FiltroMaps" />
+        <activity
+            android:name=".MapaPilas"
+            android:parentActivityName=".FiltroMaps" />
+        <activity
+            android:name=".MapaMetales"
+            android:parentActivityName=".FiltroMaps" />
+        <activity
+            android:name=".MapaCartonPapel"
+            android:parentActivityName=".FiltroMaps" />
+        <activity
+            android:name=".FiltroMaps"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ForgotPassword"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".HomeActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".FiltroMaps" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplashTheme">

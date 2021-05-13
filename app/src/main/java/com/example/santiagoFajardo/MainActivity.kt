@@ -34,13 +34,13 @@ class MainActivity : AppCompatActivity() {
     //btn - entrar sin registrarse
     private fun entrarSinLogin(){
         buttonSinLogIn.setOnClickListener {
-            val intent = Intent(this,HomeActivity::class.java)
+            val intent = Intent(this,FiltroMaps::class.java)
             startActivity(intent)
         }
     }
 
     //  btn - Olvidaste la contra?
-    public fun forgetPassword(){
+    private fun forgetPassword(){
         forgot_password.setOnClickListener {
             startActivity(Intent(this@MainActivity, ForgotPassword::class.java))
         }
@@ -50,12 +50,13 @@ class MainActivity : AppCompatActivity() {
     private fun setup(){
         var tittle = "Autentificacion"
 
+        //boton de registro y verifca que este ok
         RegisterBotton.setOnClickListener {
             if (emailEditText.text.isNotEmpty() &&  PasswordeditText.text.isNotEmpty()){
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.text.toString()
                     ,PasswordeditText.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful){
-                        MostrarHome()
+                        registroOk()
                     }
                     else{
                         mostrarError()
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        //verifica si estamos en la bbdd. boton de acceder
         AccessButton.setOnClickListener {
             if (emailEditText.text.isNotEmpty() &&  PasswordeditText.text.isNotEmpty()){
 
@@ -90,9 +92,19 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
     }
 
+
+    private fun registroOk(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Bienvenido")
+        builder.setMessage("Se ha Registrado correctamente")
+        builder.setPositiveButton("Aceptar",null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
     // Entrar cuando el log in este bien
     private fun MostrarHome(){
-        val homeIntent = Intent(this,HomeActivity::class.java).apply {
+        val homeIntent = Intent(this,FiltroMaps::class.java).apply {
         }
         startActivity(homeIntent)
     }
